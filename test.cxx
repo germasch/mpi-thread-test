@@ -12,7 +12,8 @@ void thread_fn(int i)
 
 int main(int argc, char** argv)
 {
-  MPI_Init(&argc, &argv);
+  int enabled;
+  MPI_Init_thread(&argc, &argv, MPI_THREAD_MULTIPLE, &enabled);
 
   for (int i = 0; i < 100; i++) {
     std::thread thread(thread_fn, i);
